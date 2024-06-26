@@ -1,0 +1,34 @@
+<mjml>
+  <mj-body>
+    <mj-section>
+      <mj-column>
+
+        <mj-image width="120px" src="https://raw.githubusercontent.com/ariefsn/share/main/images/logos/terkirim-black.png"></mj-image>
+
+        <mj-divider></mj-divider>
+
+        <mj-text font-size="16px" font-family="helvetica">Here is your activation code. The code is valid for next {{ expiredIn }} minutes</mj-text>
+
+        <mj-text font-size="36px" font-weight="bold" font-family="helvetica">{{ code }}</mj-text>
+
+        <mj-text font-size="16px" font-family="helvetica">You can continue the verification by click the button below and fill your activation code.</mj-text>
+
+        <mj-button href="{{ link }}" background-color="red">
+          Verify
+        </mj-button>
+
+        <mj-text font-size="16px" font-family="helvetica">Or copy the link and open it in your browser: {{ link }}</mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-section text-align="left" padding="0px">
+      <mj-column width="200px">
+        <mj-text>
+          Thanks, <br />
+          Terkirim Team
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+  </mj-body>
+</mjml>

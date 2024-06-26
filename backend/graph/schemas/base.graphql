@@ -1,0 +1,23 @@
+scalar Time
+scalar Map
+
+directive @protected on FIELD_DEFINITION
+directive @refresh on FIELD_DEFINITION
+
+type Query
+
+type Mutation
+
+type Subscription
+
+type Audit {
+	createdAt: Time!
+  createdBy: String
+	updatedAt: Time
+  updatedBy: String
+}
+
+enum ServiceProvider {
+  email
+  whatsapp
+}

@@ -1,0 +1,14 @@
+<mjml>
+  <mj-body>
+    <mj-section>
+      <mj-column>
+
+        <mj-image width="120px" src="https://raw.githubusercontent.com/ariefsn/share/main/images/logos/terkirim-black.png"></mj-image>
+
+        <mj-divider></mj-divider>
+
+        <mj-text font-size="16px" font-family="helvetica">New request for creating user email account "{{ username }}" from {{ name }}({{ email }})</mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

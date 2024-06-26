@@ -1,0 +1,27 @@
+<mjml>
+  <mj-body>
+    <mj-section>
+      <mj-column>
+
+        <mj-image width="120px" src="https://raw.githubusercontent.com/ariefsn/share/main/images/logos/terkirim-black.png"></mj-image>
+
+        <mj-divider></mj-divider>
+
+        <mj-text font-size="16px" font-family="helvetica">Hello {{ name }}.</mj-text>
+
+        <mj-text font-size="16px" font-family="helvetica">Congratulation, your email account has been approved.</mj-text>
+
+        <mj-text font-size="16px" font-family="helvetica">You can send an email from "{{ account }}" now, enjoy :).</mj-text>
+
+      </mj-column>
+    </mj-section>
+    <mj-section text-align="left" padding="0px">
+      <mj-column width="200px">
+        <mj-text>
+          Thanks, <br />
+          Terkirim Team
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

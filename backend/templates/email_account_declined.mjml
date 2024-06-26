@@ -1,0 +1,27 @@
+<mjml>
+  <mj-body>
+    <mj-section>
+      <mj-column>
+
+        <mj-image width="120px" src="https://raw.githubusercontent.com/ariefsn/share/main/images/logos/terkirim-black.png"></mj-image>
+
+        <mj-divider></mj-divider>
+
+        <mj-text font-size="16px" font-family="helvetica">Hello {{ name }}.</mj-text>
+
+        <mj-text font-size="16px" font-family="helvetica">Thank you for registering email username for your account. Unfortunatelly your request for "{{ account }}" has been rejected due to system restriction.</mj-text>
+
+        <mj-text font-size="16px" font-family="helvetica">You can request again with the new username, thank you :).</mj-text>
+
+      </mj-column>
+    </mj-section>
+    <mj-section text-align="left" padding="0px">
+      <mj-column width="200px">
+        <mj-text>
+          Thanks, <br />
+          Terkirim Team
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

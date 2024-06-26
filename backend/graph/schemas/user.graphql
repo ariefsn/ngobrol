@@ -1,0 +1,51 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+input UserLoginPayload {
+  email: String!
+  roomCode: String!
+}
+
+input UserSearchPayload {
+  firstName: String!
+  lastName: String!
+  email: String!
+  skip: Int
+  limit: Int
+}
+
+input UserUpdatePayload {
+  firstName: String!
+  lastName: String!
+  image: String!
+}
+
+type UserSearchResponse {
+  items: [UserData!]!
+  total: Int
+}
+
+type UserLoginResponse {
+  profile: UserData!
+}
+
+type UserData {
+  id: String!
+  firstName: String!
+  lastName: String!
+  email: String!
+  image: String!
+  audit: Audit!
+}
+
+extend type Query {
+  userProfile: UserData! @protected
+  getUsers(input: UserSearchPayload!): UserSearchResponse! @protected
+}
+
+extend type Mutation {
+  userLogin(input: UserLoginPayload!): UserLoginResponse!
+  userLogout: Boolean! @protected
+  userUpdateProfile(input: UserUpdatePayload!): UserData! @protected
+}

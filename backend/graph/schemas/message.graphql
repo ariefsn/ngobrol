@@ -1,0 +1,38 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+input MessageCreatePayload {
+  message: String!
+}
+
+input MessageSearchPayload {
+  skip: Int
+  limit: Int
+}
+
+type MessageSearchResponse {
+  items: [MessageData!]!
+  total: Int
+}
+
+type MessageData {
+  id: String!
+  roomId: String!
+  fromId: String!
+  message: String!
+  isNew: Boolean!
+  audit: Audit!
+}
+
+extend type Query {
+  getMessages(input: MessageSearchPayload!): MessageSearchResponse! @protected
+}
+
+extend type Mutation {
+  sendMessage(input: MessageCreatePayload!): MessageData! @protected
+}
+
+extend type Subscription {
+  subNewMessage(code: String!): MessageData!
+}

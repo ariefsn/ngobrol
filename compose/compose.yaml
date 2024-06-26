@@ -1,0 +1,69 @@
+version: '3'
+
+name: chat
+
+services:
+  # mongo:
+  #   image: mongo:6.0
+  #   container_name: terkirim-mongo
+  #   mem_limit: 150m
+  #   restart: unless-stopped
+  #   environment:
+  #     - MONGO_INITDB_ROOT_USERNAME=${MONGO_USER}
+  #     - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
+  #     - MONGO_INITDB_DATABASE=${MONGO_DATABASE}
+  #   volumes:
+  #     - ${MONGO_VOLUME}:/data/db
+  #   networks:
+  #     - chat-network
+
+  backend:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    container_name: chat-backend
+    environment:
+      - MODE=${BE_MODE}
+      - APP_NAME=${BE_APP_NAME}
+      - APP_HOST=${BE_APP_HOST}
+      - APP_PORT=${BE_APP_PORT}
+      - MONGO_HOST=${BE_MONGO_HOST}
+      - MONGO_PORT=${BE_MONGO_PORT}
+      - MONGO_USER=${BE_MONGO_USER}
+      - MONGO_PASSWORD=${BE_MONGO_PASSWORD}
+      - MONGO_DB=${BE_MONGO_DB}
+      - REDIS_HOST=${BE_REDIS_HOST}
+      - REDIS_PORT=${BE_REDIS_PORT}
+      - REDIS_USER=${BE_REDIS_USER}
+      - REDIS_PASSWORD=${BE_REDIS_PASSWORD}
+      - REDIS_DB=${BE_REDIS_DB}
+      - JWT_SECRET=${BE_JWT_SECRET}
+      - JWT_EXPIRY=${BE_JWT_EXPIRY}
+      - AUTH_MODE=${BE_AUTH_MODE}
+      - URL_PUBLIC=${BE_URL_PUBLIC}
+      - URL_EMAIL=${BE_URL_EMAIL}
+      - URL_WUZAPI=${BE_URL_WUZAPI}
+      - URL_QUEUE=${BE_URL_QUEUE}
+      - EMAIL_DOMAIN=${BE_EMAIL_DOMAIN}
+    ports:
+      - "6002:6001"
+    networks:
+      - chat-network
+
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    container_name: chat-frontend
+    environment:
+      - VITE_GQL_URL=${FE_VITE_GQL_URL}
+      - VITE_GQL_WS_URL=${FE_VITE_GQL_WS_URL}
+    depends_on:
+      - backend
+    ports:
+      - "5173:80"
+    networks:
+      - chat-network
+
+networks:
+  chat-network:

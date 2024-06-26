@@ -1,0 +1,36 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+input RoomCreatePayload {
+  roomCode: String!
+  userId: String!
+}
+
+type RoomData {
+  id: String!
+  code: String!
+  image: String!
+  users: [String!]!
+  audit: Audit!
+}
+
+type RoomDataDetails {
+  id: String!
+  code: String!
+  image: String!
+  users: [UserData!]!
+  audit: Audit!
+}
+
+extend type Query {
+  roomDetails: RoomDataDetails! @protected
+}
+
+extend type Mutation {
+  roomCreate(input: RoomCreatePayload!): RoomDataDetails!
+}
+
+extend type Subscription {
+  subRoomDetails(code: String!): RoomDataDetails!
+}
